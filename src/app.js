@@ -6,7 +6,7 @@ app.use(cors());
 app.use(express.json());
 
 const usuario = [
-  {
+  /*{
     username: 'bobesponja',
     avatar: 'https://www.nerdsite.com.br/wp-content/uploads/2022/11/Bob-Esponja-Novo-filme-estreia-apenas-em-2025-diz-site.jpg',
   },
@@ -17,14 +17,14 @@ const usuario = [
   {
     username: 'molusco',
     avatar: 'https://miro.medium.com/max/580/1*SVB1mupO2Wz6LqxVWn5Rgw.jpeg'
-  }
+  }*/
 
 
 ]
 
 
 const tweets = [
-  {
+  /*{
     username: 'bobesponja',
     tweet: 'Eu gosto de encher o saco das pessoas que eu amo!'
   },
@@ -35,7 +35,7 @@ const tweets = [
   {
     username: 'molusco',
     tweet: 'Acredite na fantasia que vc quiser, mas faça isso longe de mim'
-  }
+  }*/
 
 ]
 
@@ -51,7 +51,7 @@ app.post("/tweets", (req, res) => {
   const { username, tweet } = req.body
 
   if (!username || !tweet) {
-    res.status(400).send('Todos os campos são obrigatórios!')
+    res.status.send('UNAUTHORIZED')
     return;
   }
 
