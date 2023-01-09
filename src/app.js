@@ -50,15 +50,13 @@ app.post("/sign-up", (req, res) => {
 app.post("/tweets", (req, res) => {
   const { username, tweet } = req.body
 
-  if (!tweet) {
-    res.status(400).send('UNAUTHORIZED')
-    return;
-  }
-  if(!usuario){
-    res.status(401).send("UNAUTHORIZED")
+  const user = usuario.find((user) => user.username === username);
+  if (!user) {
+    res.status(401).send("UNAUTHORIZED");
+  } else {
+    tweets.unshift(req.body)
   }
 
-  tweets.unshift(req.body)
   res.status(201).send('OK')
 })
 
@@ -80,7 +78,7 @@ app.get("/tweets", (req, res) => {
           tweet: tweets[i].tweet
         }
       )
-    } 
+    }
   }
   res.send(publicados);
 })
