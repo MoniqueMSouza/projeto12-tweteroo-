@@ -50,9 +50,12 @@ app.post("/sign-up", (req, res) => {
 app.post("/tweets", (req, res) => {
   const { username, tweet } = req.body
 
-  if (!username || !tweet) {
+  if (!tweet) {
     res.status(400).send('UNAUTHORIZED')
     return;
+  }
+  if(!usuario){
+    res.status(401).send("UNAUTHORIZED")
   }
 
   tweets.unshift(req.body)
