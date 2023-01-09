@@ -51,7 +51,7 @@ app.post("/tweets", (req, res) => {
   const { username, tweet } = req.body
 
   if (!username || !tweet) {
-    res.status.send('UNAUTHORIZED')
+    res.status(400).send('UNAUTHORIZED')
     return;
   }
 
