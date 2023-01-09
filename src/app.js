@@ -50,8 +50,13 @@ app.post("/sign-up", (req, res) => {
 app.post("/tweets", (req, res) => {
   const { username, tweet } = req.body
 
+  if (!username || !tweet) {
+    res.status(400).send('Todos os campos são obrigatórios!')
+    return;
+  }
+
   tweets.unshift(req.body)
-  res.send('OK')
+  res.status(201).send('OK')
 })
 
 function buscarAvatar(username) {
