@@ -39,6 +39,43 @@ const tweets = [
 
 ]
 
+app.post("/sign-up", (req, res) => {
+  const { username, avatar } = req.body;
+
+  usuario.push(req.body);
+  res.send('Ok');
+})
+
+
+app.post("/tweets", (req, res) => {
+  const { username, tweet } = req.body
+
+  tweets.unshift(req.body)
+  res.send('OK')
+})
+
+function buscarAvatar(username) {
+  const usuarioVerificado = usuario.find((obj) => username === obj.username)
+  return usuarioVerificado.avatar
+}
+
+app.get("/tweets", (req, res) => {
+
+  let publicados = []
+
+  for (let i = 0; i < 10; i++) {
+    if (i < tweets.length) {
+      publicados.push(
+        {
+          username: tweets[i].username,
+          avatar: buscarAvatar(tweets[i].username),
+          tweet: tweets[i].tweet
+        }
+      )
+    } 
+  }
+  res.send(publicados);
+})
 
 
 app.listen(5000, () => {
