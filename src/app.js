@@ -43,7 +43,7 @@ app.post("/sign-up", (req, res) => {
   const { username, avatar } = req.body;
 
   usuario.push(req.body);
-  res.send('Ok');
+  res.status(201).send('OK');
 })
 
 
